@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon app.js"
-  },
+    "start": "node index.js"  },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
