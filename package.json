@@ -1,0 +1,31 @@
+{
+  "name": "jwt_auth",
+  "version": "1.0.0",
+  "description": "Implementing JWT authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest --testTimeout=5000 --detectOpenHandles",
+    "dev": "nodemon app.js"
+  },
+  "jest": {
+    "test environment": "node"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.18.3",
+    "jest": "^29.7.0",
+    "joi": "^17.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.5.0",
+    "mongodb-memory-server": "^9.1.8",
+    "mongoose": "^8.2.2",
+    "passport-jwt": "^4.0.1"
+  }
+}
