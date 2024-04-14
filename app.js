@@ -9,9 +9,8 @@ connectToMongodb()
 
 app.use(express.json())
 
-app.set('view engine', 'ejs')
 
-app.use('/', userRoute)
+app.use('/users', userRoute)
 app.use('/books', booksroute)
 
 // global error handler
@@ -21,6 +20,7 @@ app.use((err, req, res, next) => {
         data: null,
         error: 'Server Error'
     })
+
 })
 
 
