@@ -39,8 +39,8 @@ class Connection {
 /**
  * Create the initial database connection.
  *
- * @async
- * @return {Promise<Object>}
+//  * @async
+//  * @return {Promise<Object>}
  */
 exports.connect = async () => {
   const conn = new Connection();

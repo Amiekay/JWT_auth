@@ -4,11 +4,14 @@
   "description": "Implementing JWT authentication",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=5000 --detectOpenHandles",
+    "test": "jest",
     "dev": "nodemon app.js"
   },
   "jest": {
-    "test environment": "node"
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +29,7 @@
     "mongodb": "^6.5.0",
     "mongodb-memory-server": "^9.1.8",
     "mongoose": "^8.2.2",
-    "passport-jwt": "^4.0.1"
+    "passport-jwt": "^4.0.1",
+    "supertest": "^6.3.4"
   }
 }

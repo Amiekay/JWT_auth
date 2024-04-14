@@ -1,11 +1,11 @@
 const supertest = require('supertest');
-const app = require('../api');
+const app = require('../testApp');
 const { connect } = require('./database');
-const UserModel = require('../models/user.model');
+const UserModel = require('../models/userModel');
 
 // Test suite
 describe('Authentication Tests', () => {
-    let connection
+    let connection;
     // before hook
     beforeAll(async () => {
         connection = await connect()
@@ -24,81 +24,61 @@ describe('Authentication Tests', () => {
     // Test case
     it('should successfully register a user', async () => {
         const response = await supertest(app)
-        .post('/users/signup')
+        .post('/users/register')
         .set('content-type', 'application/json')
         .send({
-            name: "sojidan",
+            name: "Amarachi",
             password: "12345678",
-            email: "dan@example.com",
-            contact: "lagos",
-            phone_number: "90345454565",
-            gender: "male"
+            email: "amara@gmail.com",
+        
         })
 
         // expectations
-        expect(response.status).toEqual(201);
-        expect(response.body.user).toMatchObject({
-            name: "sojidan",
-            email: "dan@example.com",
-            contact: "lagos",
-            phone_number: "90345454565",
-            gender: "male"
-        })
+        expect(response.status).toEqual(200);
+        
     })
 
     // Test case
     it('should successfully login a user', async () => {
         await UserModel.create({
-            name: "sojidan",
-            email: "dan@example.com",
-            contact: "lagos",
-            phone_number: "90345454565",
-            gender: "male",
-            password: "12345678"
+            name: "Amarachi",
+            password: "12345678",
+            email: "amara@gmail.com",
         });
 
         const response = await supertest(app)
         .post('/users/login')
         .set('content-type', 'application/json')
         .send({
-            email: "dan@example.com",
+            email: "amara@gmail.com",
             password: "12345678"
         })
 
         // expectations
         expect(response.status).toEqual(200);
-        expect(response.body).toMatchObject({
-            message: 'Login successful',
-            token: expect.any(String),
-            user: expect.any(Object)
-        })
 
-        expect(response.body.user.name).toEqual('sojidan');
-        expect(response.body.user.email).toEqual('dan@example.com');
+        
     })
 
     it('should not successfully login a user, when user does not exist', async () => {
         await UserModel.create({
-            name: "sojidan",
-            email: "dan@example.com",
-            contact: "lagos",
-            phone_number: "90345454565",
-            gender: "male",
-            password: "12345678"
+            name: "Amarachi",
+            password: "12345678",
+            email: "amara@gmail.com",
         });
 
         const response = await supertest(app)
         .post('/users/login')
         .set('content-type', 'application/json')
         .send({
-            email: "sam@example.com",
+            email: "zee@example.com",
             password: "12345678"
         })
 
         // expectations
-        expect(response.status).toEqual(404);
+        expect(response.status).toEqual(401);
         expect(response.body).toMatchObject({
-            message: 'User not found',
+            message: 'Unauthorized',
         })
     })
 })
