@@ -1,21 +1,27 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
+const express = require('express')
 
-const MONGODB_CONNECTION_URL= process.env.MONGODB_CONNECTION_URL
+const app = express()
+const PORT = process.env.PORT || 8600
 
-
-function connectToMongodb(){
-    mongoose.connect(MONGODB_CONNECTION_URL)
-
-    mongoose.connection.on('connected',()=>{
-        console.log('MongoDB connected successfully')})
-
-    mongoose.connection.on('error',(err)=>{
-       console.log(err)
-       console.log('an error occured') 
-
-    })
+const connectToMongodb= async () => {
+  try {
+    const MONGODB_CONNECTION_URL=  await mongoose.connect(process.env.MONGODB_CONNECTION_URL)
+     console.log('MongoDB Connected Successfully');
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
 }
+
+//Connect to the database before listening
+connectToMongodb().then(() => 
+    app.listen(PORT, () => {
+        console.log(`Server started on Port ${PORT}`)
+    }
+    ))
+
 
 
 
