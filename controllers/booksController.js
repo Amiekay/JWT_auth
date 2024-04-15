@@ -119,11 +119,11 @@ const deleteOneBook = async(req, res)=>{
   const decodedToken = await jwt.verify(token, process.env.JWT_SECRET)
   //   const updatedBook=  await booksModel.findOneAndUpdate({email: decodedToken.email}, detailsToUpdate)
 
- const one = await booksModel.findById(postId).where(email === decodedToken.email)
-console.log(one)
+ const one = await booksModel.findByIdAndDelete(postId).where(email === decodedToken.email)
+
 const user = await userModel.findById(decodedToken._id, {password: 0})
 res.status(200).json({user, one})
-// console.log(updatedBook)
+
 console.log(postId)
   } catch (error) {
     res.status(400).json({
