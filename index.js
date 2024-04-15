@@ -3,7 +3,9 @@ const app = express()
 const connectToMongodb = require('./db')
 const booksroute = require('./routes/bookRoutes')
 const userRoute = require('./routes/userRoute')
-const PORT = 8600
+require('dotenv').config()
+
+const PORT = process.env.PORT
 
 connectToMongodb()
 

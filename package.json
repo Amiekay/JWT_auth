@@ -2,10 +2,10 @@
   "name": "jwt_auth",
   "version": "1.0.0",
   "description": "Implementing JWT authentication",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node app.js"  },
+    "start": " node index.js"  },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
