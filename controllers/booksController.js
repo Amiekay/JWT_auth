@@ -90,15 +90,15 @@ try {
   const decodedToken = await jwt.verify(token, process.env.JWT_SECRET)
 const foundBook = await booksModel.findById(postId, {email: 0})
 const user = await userModel.findById(decodedToken._id, {password: 0})
-if (!foundBook){
-  res.status(404).json({
-    message: 'Post not found'
-})
+// if (!foundBook){
+//   res.status(404).json({
+//     message: 'Post not found'
+// })
 
 
 res.status(200).json({foundBook, user})
 console.log(postId)
-}}
+}
 catch (error) {
   
 res.status(400).json({
