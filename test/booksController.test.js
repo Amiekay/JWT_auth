@@ -45,7 +45,7 @@ describe('Books Route Tests', () => {
 
     // test case
     it('should return a book', async () => {
-        const response = await supertest(app).get('/books/:id')
+        const response = await supertest(app).get('/posts/:id')
         .set('authorization', `Bearer ${token}`)
         .set('content-type', 'application/json')
 

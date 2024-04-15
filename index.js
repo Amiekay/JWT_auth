@@ -25,9 +25,9 @@ connectToMongodb().then(() =>
     ))
 
 
-app.get("/", (req, res) => {
-    res.status(200).json( { msg: "Welcome" });
-});
+// app.get("/", (req, res) => {
+//     res.status(200).json( { msg: "Welcome" });
+// });
     
 
 app.use(express.json())

@@ -24,7 +24,7 @@ describe('Authentication Tests', () => {
     // Test case
     it('should successfully register a user', async () => {
         const response = await supertest(app)
-        .post('/users/register')
+        .post('/register')
         .set('content-type', 'application/json')
         .send({
             name: "Amarachi",
@@ -47,7 +47,7 @@ describe('Authentication Tests', () => {
         });
 
         const response = await supertest(app)
-        .post('/users/login')
+        .post('/login')
         .set('content-type', 'application/json')
         .send({
             email: "amara@gmail.com",
@@ -68,7 +68,7 @@ describe('Authentication Tests', () => {
         });
 
         const response = await supertest(app)
-        .post('/users/login')
+        .post('/login')
         .set('content-type', 'application/json')
         .send({
             email: "zee@example.com",
