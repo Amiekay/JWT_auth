@@ -33,8 +33,8 @@ app.get("/", (req, res) => {
 app.use(express.json())
 
 
-app.use('/users', userRoute)
-app.use('/books', booksroute)
+app.use('/', userRoute)
+app.use('/posts', booksroute)
 
 
 
