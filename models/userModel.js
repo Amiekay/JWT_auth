@@ -48,4 +48,4 @@ userModel.pre('save', async function (next) {
   
     return compare;
   }
-module.exports = mongoose.model('users', userModel)
+module.exports = mongoose.model('User', userModel)

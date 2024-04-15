@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 // const connectToMongodb = require('./db')
-const booksroute = require('./routes/bookRoutes')
+const postsRoute = require('./routes/postsRoute')
 const userRoute = require('./routes/userRoute')
 require('dotenv').config()
 const PORT = process.env.PORT || 8600
@@ -34,7 +34,7 @@ app.use(express.json())
 
 
 app.use('/', userRoute)
-app.use('/posts', booksroute)
+app.use('/posts', postsRoute)
 
 
 

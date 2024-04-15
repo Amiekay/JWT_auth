@@ -9,13 +9,11 @@ const user = req.body
 
 try {
     const existingUser = await userModel.findOne({email: user.email})
-console.log(existingUser)
     if(existingUser){
         return res.status(409).json({
             message: 'user already created'
         })
     }
-    else{
     const createdUser = await userModel.create({
         name: user.name,
         email: user.email,
@@ -23,10 +21,10 @@ console.log(existingUser)
         createdAt: user.createdAt,
         updatedAt: user.updatedAt
     })
-
     const token =  await jwt.sign({email: createUser.email, _id: createdUser._id}, process.env.JWT_SECRET)
 
-    return res.status(200).json({
+
+    res.status(200).json({
         token,
         message: 'Registered successfuly',
         data: {
@@ -35,7 +33,7 @@ console.log(existingUser)
             createdAt: createdUser.createdAt,
             updatedAt: createdUser.updatedAt
         }
-    })}
+    })
 } catch (error) {
     res.status(400).json({
         message: 'an error occured',

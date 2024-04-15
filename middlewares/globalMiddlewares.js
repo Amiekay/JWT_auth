@@ -27,9 +27,7 @@ console.log(req.body)
         const token = authHeader.authorization.split(' ')[1]; // berear tokenvalue
     
         const decoded = await jwt.verify(token, process.env.JWT_SECRET)
-        console.log({ decoded })
     
-        // decoded { email: someemail@mail.com, _id: jshkdf }
     
         const user = await userModel.findOne({ _id: decoded._id })
         

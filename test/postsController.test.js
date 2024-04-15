@@ -4,9 +4,8 @@ const { connect } = require('./database');
 const UserModel = require('../models/userModel');
 
 // Test suite
-describe('Books Route Tests', () => {
+describe('Post Route Tests', () => {
     let connection;
-    let token;
     // before hook
     beforeAll(async () => {
         connection = await connect()
@@ -31,6 +30,8 @@ describe('Books Route Tests', () => {
         })
 
         // store the token in a global object
+        let token;
+
         token = response.body.token
     })
 
@@ -44,12 +45,12 @@ describe('Books Route Tests', () => {
     })
 
     // test case
-    it('should return a book', async () => {
+    it('should return a post', async () => {
         const response = await supertest(app).get('/posts/:id')
         .set('authorization', `Bearer ${token}`)
         .set('content-type', 'application/json')
 
-        expect(response.status).toEqual(200);
+        expect(response.status).toEqual(201);
     })
 
 

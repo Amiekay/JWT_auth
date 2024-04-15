@@ -1,24 +1,21 @@
+
 const mongoose = require('mongoose')
 
-const bookModel = new mongoose.Schema({
-    email:{
-        type: String,
-        required: true
-    },
+const postModel = new mongoose.Schema({
     title:{
         type: String,
         required: true
     },
-    year:{
-        type:  Number,
-        required: true,
-        max: [2024, 'Year must be 2024 or below']
+    body:{
+        type: String,
+        required: true
     },
 
-    ISBN:{
-        type: String,
-        required: true,
+    user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
     },
+
     createdAt:{
         type: Date,
         default: Date.now
@@ -32,7 +29,7 @@ const bookModel = new mongoose.Schema({
     
 )
 
-module.exports = mongoose.model('newbooks', bookModel)
+module.exports = mongoose.model('Post', postModel)
 
 
 
