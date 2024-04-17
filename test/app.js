@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
-const connectToMongodb = require('./db')
-const postsRoute = require('./routes/bookRoutes')
+const connectToMongodb = require('../db')
+const postsRoute = require('../routes/postsRoute')
 const userRoute = require('./routes/userRoute')
-const PORT = 8600
 
 connectToMongodb()
 
