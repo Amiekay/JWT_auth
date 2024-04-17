@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const connectToMongodb = require('../db')
 const postsRoute = require('../routes/postsRoute')
-const userRoute = require('./routes/userRoute')
+const userRoute = require('../routes/userRoute')
 
 connectToMongodb()
 
