@@ -21,7 +21,7 @@ try {
         createdAt: user.createdAt,
         updatedAt: user.updatedAt
     })
-    const token =  await jwt.sign({email: createUser.email, _id: createdUser._id}, process.env.JWT_SECRET)
+    const token =  await jwt.sign({email: createdUser.email, _id: createdUser._id}, process.env.JWT_SECRET)
 
 
     res.status(200).json({
@@ -90,8 +90,6 @@ const Login = async(req, res)=>{
  }
 
 }
-
-// USER SERVICES
 
 
 module.exports = {createUser, Login}

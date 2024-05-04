@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const booksroute = require('./routes/postsRoute')
+const postRoute = require('./routes/postsRoute')
 const userRoute = require('./routes/userRoute')
 
 
@@ -14,9 +14,9 @@ app.get('/', async (req, res) => {
         users
     })})
 
-app.use('/books', booksroute)
+app.use('/posts', postRoute)
 
-app.use('/users', userRoute)
+app.use('/', userRoute)
 
 
 

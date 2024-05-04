@@ -11,7 +11,7 @@ app.use(express.json())
 app.set('view engine', 'ejs')
 
 app.use('/', userRoute)
-app.use('/books', postsRoute)
+app.use('/posts', postsRoute)
 
 // global error handler
 app.use((err, req, res, next) => {
